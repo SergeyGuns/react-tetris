@@ -1,0 +1,11 @@
+.matrix {
+  border-left: 1px solid;
+  border-top: 1px solid;
+}
+.matrix__col {
+  width: 5px;
+  height: 5px;
+  display: table-cell;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
