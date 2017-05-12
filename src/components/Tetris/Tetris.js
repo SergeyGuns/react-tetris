@@ -3,8 +3,8 @@ import GameLoop from './GameLoop'
 import './Tetris.css'
 const initState = [
   [0,0,0,0,1,1,0,0,0,0],
-  [0,0,0,0,1,1,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
+  [0,2,2,0,1,1,0,0,0,0],
+  [0,2,2,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
@@ -19,8 +19,8 @@ const initState = [
   [0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0],
   [0,9,0,0,0,0,0,0,0,0],
-  [0,9,9,0,0,0,0,0,0,0],
-  [0,9,9,0,0,9,9,9,0,0],
+  [0,0,9,0,0,0,0,0,0,0],
+  [0,0,9,0,0,9,9,9,0,0],
   [9,9,9,9,9,9,9,9,9,0]
 ]
 
@@ -47,7 +47,7 @@ class Tetris extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('click', this.loop())
+    document.addEventListener('click', ()=>this.loop())
   }
   
   loop() {
