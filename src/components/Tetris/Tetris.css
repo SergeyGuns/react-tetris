@@ -3,8 +3,8 @@
   border-top: 1px solid;
 }
 .matrix__col {
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height: 10px;
   display: table-cell;
   border-bottom: 1px solid;
   border-right: 1px solid;

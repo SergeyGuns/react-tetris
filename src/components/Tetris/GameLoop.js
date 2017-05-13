@@ -2,7 +2,6 @@ export default function GameLoop (matrix) {
     console.log('GameLoop Step')
     let toDrop = false;
     let toFreez = 0;
-
     function check() {
       for(let Y = matrix.length-1; Y >= 0; Y--) {
         for(let X = matrix[Y].length-1; X >= 0; X--) {
@@ -10,7 +9,7 @@ export default function GameLoop (matrix) {
           if( matrix[Y+1] && matrix[Y+1][X] === 0 && matrix[Y][X] !== 9) {
             toDrop = true;
           }
-          if ( matrix[Y+1] && matrix[Y+1][X] === 9 && matrix[Y][X] !== 0 ) {
+          if ( matrix[Y+1] && matrix[Y+1][X] === 9 && matrix[Y][X] !== 9 && matrix[Y][X] !== 0 ) {
             toFreez = matrix[Y][X];
           }
         }
@@ -20,6 +19,7 @@ export default function GameLoop (matrix) {
     }
 
     function freezing(num) {
+      console.log(num)
       for(let Y = matrix.length-1; Y >= 0; Y--) {
         for(let X = matrix[Y].length-1; X >= 0; X--) {
           if(matrix[Y][X] === num) {
