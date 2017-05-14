@@ -1,28 +1,7 @@
 import React from 'react'
 import GameLoop from './GameLoop'
+import Actions from './Actions'
 import './Tetris.css'
-const initState = [
-  [0,0,0,0,1,1,0,0,0,0],
-  [0,2,2,0,1,1,0,0,0,0],
-  [0,2,2,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0],
-  [0,9,0,0,0,0,0,0,0,0],
-  [0,0,9,0,0,0,0,0,0,0],
-  [0,0,9,0,0,9,9,9,0,0],
-  [9,9,9,9,9,9,9,9,9,0]
-]
 
 const color = {
   0: 'transparent',
@@ -38,24 +17,39 @@ const color = {
 
 
 class Tetris extends React.Component {
-  constructor({matrix = initState}){
+  constructor(){
     super()
-    this.state = {
-      matrix: initState,
-    }
+    this.state = {...this.props.model}
+    this.moveLeft = 
     this.gameLoop = GameLoop
   }
 
   componentDidMount() {
+    //document.addEventListener('keypress', this.keyBoardHandler)
     document.addEventListener('click', ()=>this.loop())
   }
   
   loop() {
-    console.log(1)
     this.setState({matrix : this.gameLoop(this.state.matrix)})
   }
+
+  keyBoardHandler(event) {
+
+    const KEY = event.key.toUpperCase()
+    
+    console.log(KEY)
+
+    const actions = {
+    
+      'D' : console.log('moveRight'),
+      'A' : console.log('moveLeft'),
+      'S' : console.log('moveDown')
+    
+    }
+
+  }
   render() {
-    let { matrix } = this.state 
+    let { matrix } = this.state.model 
     return (
       <div className='matrix'>
         {
