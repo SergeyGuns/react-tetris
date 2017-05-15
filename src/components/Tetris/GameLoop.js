@@ -1,3 +1,5 @@
+import getFigure from './Figures'
+console.log(getFigure())
 export default function GameLoop (matrix) {
     console.log('GameLoop Step')
     let toDrop = false;
@@ -19,7 +21,6 @@ export default function GameLoop (matrix) {
     }
 
     function freezing(num) {
-      console.log(num)
       for(let Y = matrix.length-1; Y >= 0; Y--) {
         for(let X = matrix[Y].length-1; X >= 0; X--) {
           if(matrix[Y][X] === num) {
@@ -28,6 +29,19 @@ export default function GameLoop (matrix) {
         }
       }
       toFreez = 0;
+      addFigures()
+    }
+
+    function addFigures() {
+      let newFigure = getFigure()
+      
+      for(let Y = 0,len = matrix.length - 1; Y < len; Y++) {
+  
+        for(let X = 0, len = matrix[Y].length - 1; X < len; X++) {
+          if(newFigure[Y] && newFigure[Y][X])
+            matrix[Y][X] = newFigure[Y][X]
+        }
+      }
     }
 
     function dropin() {

@@ -17,15 +17,15 @@ const color = {
 
 
 class Tetris extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props) 
     this.state = {...this.props.model}
-    this.moveLeft = 
-    this.gameLoop = GameLoop
+    this.gameLoop = GameLoop;
+    console.log(this.props);
   }
 
   componentDidMount() {
-    //document.addEventListener('keypress', this.keyBoardHandler)
+    document.addEventListener('keypress', (e)=>this.keyBoardHandler(e))
     document.addEventListener('click', ()=>this.loop())
   }
   
@@ -36,20 +36,21 @@ class Tetris extends React.Component {
   keyBoardHandler(event) {
 
     const KEY = event.key.toUpperCase()
-    
+    const { MOVE_LEFT, MOVE_RIGHT } = this.props.actions
     console.log(KEY)
 
     const actions = {
     
-      'D' : console.log('moveRight'),
-      'A' : console.log('moveLeft'),
-      'S' : console.log('moveDown')
+      'D' : ()=>this.setState({matrix: MOVE_RIGHT(this.state.matrix)}),
+      'A' : ()=>this.setState({matrix: MOVE_LEFT(this.state.matrix)}),
+      'S' : ()=>this.loop()
     
     }
+    actions[KEY]()
 
   }
   render() {
-    let { matrix } = this.state.model 
+    let { matrix } = this.state 
     return (
       <div className='matrix'>
         {

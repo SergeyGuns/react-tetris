@@ -79,4 +79,4 @@ const MOVE_RIGHT = function (matrix) {
 }
 //const MOVE_DOWN;
 //const PAUSE_TOOGLE;
-export { MOVE_LEFT, MOVE_RIGHT }
+export default { MOVE_LEFT, MOVE_RIGHT }

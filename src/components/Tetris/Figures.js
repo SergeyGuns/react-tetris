@@ -1,39 +1,40 @@
-FIGURES = {
-  J : `001 
-       001 
-       011`,
+export default function getRandomFigure(arg) {
 
-  L : `200 
-       200
-       220`,
+  const FIGURES = {
 
-  O : `33 
-       33`,
+    J:[[0,0,1], 
+       [0,0,1], 
+       [0,1,1]],
 
-  S : `000 
-       044 
-       440`,
+    L:[[2,0,0], 
+       [2,0,0],
+       [2,2,0]],
 
-  Z : `000 
-       550 
-       055`,
+    O:[[3,3], 
+       [3,3]],
 
-  I : `0600
-       0600
-       0600 
-       0600`,
+    S:[[0,0,0],
+       [0,4,4], 
+       [4,4,0]],
 
-  T : `000 
-       777 
-       070`,
+    Z:[[0,0,0],
+       [5,5,0],
+       [0,5,5]],
 
-}
+    I:[[0,6,0,0],
+       [0,6,0,0],
+       [0,6,0,0], 
+       [0,6,0,0]],
 
-class Figures {
-  constructor({figures = FIGURES})
-  getRandomFigure() { 
-    return figures[['J','L','O','S','Z','I','T'][Math.ceil(Math.random()*7)]]
+    T:[[0,0,0], 
+       [7,7,7], 
+       [0,7,0]],
+
   }
+
+  if(!arg)
+    return FIGURES[Object.keys(FIGURES)[Math.ceil(Math.random()*7)]];
+  else
+    return FIGURES[arg];
 }
 
-export default Figures
