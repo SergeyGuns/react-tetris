@@ -11,8 +11,20 @@ export default function GameLoop (matrix) {
           if( matrix[Y+1] && matrix[Y+1][X] === 0 && matrix[Y][X] !== 9) {
             toDrop = true;
           }
-          if ( matrix[Y+1] && matrix[Y+1][X] === 9 && matrix[Y][X] !== 9 && matrix[Y][X] !== 0 ) {
+          if ( matrix[Y+1] && 
+               matrix[Y+1][X] === 9 && 
+               matrix[Y][X] !== 9 && 
+               matrix[Y][X] !== 0 ) {
+
             toFreez = matrix[Y][X];
+          
+          }
+          if ( matrix[Y][X] !== 9 && 
+               matrix[Y][X] !== 0 &&
+               matrix[Y+1] === undefined ) {
+          
+            toFreez = matrix[Y][X];
+          
           }
         }
       }
